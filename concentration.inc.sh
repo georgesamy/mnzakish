@@ -25,7 +25,8 @@ fi
 
 #set -o nounset                                  # Treat unset variables as an error
 
-BASE="$(cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")" &> /dev/null && pwd )"
+#BASE="$(cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")" &> /dev/null && pwd )"
+BASE="$(cd "$(dirname "$(realpath "$0")")" &> /dev/null && pwd )"
 source "$BASE/intention.inc.sh"
 
 CONCENTRATION_MANTRA=(

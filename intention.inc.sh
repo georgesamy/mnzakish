@@ -77,7 +77,8 @@ function getintentions {
   echo -e "\nnow:"
   declare -a STACK
   # STACK is in reverse chrono order
-  readarray -t STACK <<<"$(dirs -p)"
+  STACK=("${(@f)$(dirs -p)}")
+  #readarray -t STACK <<<"$(dirs -p)"
   local NSTACK=${#STACK[@]}
   for (( idx=$NSTACK; idx>0; idx-- )); do
     local ENTRY="${STACK[$idx-1]}\n${INTENTIONS[$(($NSTACK-$idx))]}"
@@ -87,7 +88,8 @@ function getintentions {
 
 function gist {
   declare -a STACK
-  readarray -t STACK <<<"$(dirs -p)"
+  STACK=("${(@f)$(dirs -p)}")
+  #readarray -t STACK <<<"$(dirs -p)"
   local IDX=$((${#STACK[@]}-1))
   echo -e "${INTENTIONS[$IDX]#* }"
 }
@@ -111,7 +113,8 @@ function di {
 
 function diversiondone {
   declare -a STACK
-  readarray -t STACK <<<"$(dirs -p)"
+  STACK=("${(@f)$(dirs -p)}")
+  #readarray -t STACK <<<"$(dirs -p)"
   local IDX=$((${#STACK[@]} - 1))
   INTENTIONS_DONE+=("${STACK[0]}${INTENTIONS[$IDX]}")
   unset INTENTIONS[$IDX]

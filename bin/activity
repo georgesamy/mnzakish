@@ -54,6 +54,7 @@ _msh_fzf_choose_or_create() {
   touch "$RECENT_FILE"
   declare -a RESULT
 
+  # TODO: port to zsh
   readarray -t RESULT < <(fzf --print-query < "$RECENT_FILE")
   if [[ $? -eq 130 || ${#RESULT[*]} -eq 0 ]]; then
     # fzf was CTRL-Ced, or something
